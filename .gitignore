@@ -9,4 +9,5 @@ wheels/
 # Virtual environments
 .venv
 
-jawiki-latest-pages-articles-multistream*
+simplewiki-20260601-pages-articles-multistream*
+simplewiki-md/
