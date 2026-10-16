@@ -2,6 +2,10 @@
 
 - md2csnは、Markdown記法で書かれた文書をCosense記法で書かれた文書に変換するCLIツールである。
 
+- goldmark v2はmarkdownをAST解析できる。AST解析したあと、Cosense記法に変換するGo製の高品質なCLIツールをつくりたい。引数は、md2csn (inputfile | inputfolder) -o (outputfile | outputfolder)のような感じであり、インプットはMarkdownファイルまたはフォルダを想定。複数OK。よくあるX2Y コンバータの慣習にしたがう。
+
+- Cosense記法は仕様が明文化されているわけではない。MarkdownのASTノードと、Cosense記法の変換ルールを手作業で積み上げいく必要がある。sb-spec/scrapbox-converter/packages/md2sbは参考にはなると思う。（ただしこれは正規表現ベースなので正確ではない）
+
 ## Rules
 
 - 後方互換性は維持しなくてよい。
@@ -37,3 +41,5 @@ import (
 ## Tech Stack
 - Go 1.26.0 (1.27はライブラリ非対応)
 - goldmark v2
+
+
