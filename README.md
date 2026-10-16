@@ -1,9 +1,13 @@
 
-
 使い方
 ```sh
+cd testdata
+
 md2csn < Universe.md
-cat testdata/Universe.md | md2csn
-cat testdata/Universe.md | md2csn -o Universe.txt
+cat Universe.md | md2csn
+cat Universe.md | md2csn -o Universe.txt
+md2csn Universe.md
+md2csn Universe.md -o Universe.txt
+md2csn . -o output
 ```
 
