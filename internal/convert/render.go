@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/asano69/md2csn/internal/wikilink"
 	"github.com/yuin/goldmark/v2/ast"
 )
 
@@ -53,6 +54,9 @@ func (r *renderer) renderInlines(parent ast.Node) string {
 			}
 		case *ast.CodeSpan:
 			sb.WriteString(n.Value.Value(r.source))
+		case *wikilink.Node:
+			// [[text]] in Markdown is [text] in Cosense.
+			sb.WriteString("[" + r.renderInlines(n) + "]")
 		default:
 			// Unsupported inlines only keep their text content for now.
 			sb.WriteString(r.renderInlines(n))

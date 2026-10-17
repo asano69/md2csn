@@ -4,6 +4,7 @@ package convert
 import (
 	"iter"
 
+	"github.com/asano69/md2csn/internal/wikilink"
 	"github.com/yuin/goldmark/v2/ast"
 	"github.com/yuin/goldmark/v2/parser"
 )
@@ -14,7 +15,7 @@ import (
 // of a leading level-1 heading, or fileTitle if there is none. The title is
 // followed directly by the body, without a blank line.
 func Convert(source []byte, fileTitle string) string {
-	doc := parser.New().Parse(source)
+	doc := parser.New(parser.WithExtensions(wikilink.Extension)).Parse(source)
 	r := &renderer{source: source}
 
 	var title string
