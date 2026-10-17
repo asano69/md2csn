@@ -59,6 +59,8 @@ func (r *renderer) renderInlines(parent ast.Node) string {
 		case *wikilink.Node:
 			// [[text]] in Markdown is [text] in Cosense.
 			sb.WriteString("[" + r.renderInlines(n) + "]")
+		case *ast.Link:
+			sb.WriteString(r.renderLink(n))
 		default:
 			// Unsupported inlines only keep their text content for now.
 			sb.WriteString(r.renderInlines(n))
