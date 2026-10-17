@@ -90,7 +90,7 @@ func convertFile(j job, stdout io.Writer) error {
 	if err != nil {
 		return fmt.Errorf("cannot read %s: %w", j.src, err)
 	}
-	return writeResult(j.dst, convert.Convert(src), stdout)
+	return writeResult(j.dst, convert.Convert(src, titleFromPath(j.src)), stdout)
 }
 
 // convertStdin converts piped Markdown. Without -o the result goes to stdout.
@@ -102,7 +102,7 @@ func convertStdin(output string, stdin io.Reader, stdout io.Writer) error {
 	if err != nil {
 		return fmt.Errorf("cannot read standard input: %w", err)
 	}
-	return writeResult(output, convert.Convert(src), stdout)
+	return writeResult(output, convert.Convert(src, ""), stdout)
 }
 
 // writeResult writes out to dst, or to stdout when dst is empty.

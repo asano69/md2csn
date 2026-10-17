@@ -2,6 +2,8 @@ package cli
 
 import (
 	"bytes"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -29,5 +31,22 @@ func TestRunNoInputWithoutPipe(t *testing.T) {
 	}
 	if !strings.Contains(stderr.String(), "no input given") {
 		t.Errorf("stderr = %q, want a \"no input given\" message", stderr.String())
+	}
+}
+
+func TestRunFileInsertsTitle(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "note.md")
+	if err := os.WriteFile(path, []byte("text\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+
+	code := Run([]string{path}, nil, &stdout, &stderr)
+
+	if code != 0 {
+		t.Fatalf("exit code = %d, stderr = %q", code, stderr.String())
+	}
+	if want := "note\ntext\n"; stdout.String() != want {
+		t.Errorf("stdout = %q, want %q", stdout.String(), want)
 	}
 }

@@ -116,6 +116,12 @@ func isFolderPath(p string) bool {
 	return err == nil && info.IsDir()
 }
 
+// titleFromPath returns the file name of p without its extension.
+func titleFromPath(p string) string {
+	base := filepath.Base(p)
+	return strings.TrimSuffix(base, filepath.Ext(base))
+}
+
 func withTxtExt(p string) string {
 	return strings.TrimSuffix(p, filepath.Ext(p)) + ".txt"
 }

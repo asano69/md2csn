@@ -10,12 +10,16 @@ import (
 type renderer struct {
 	source []byte
 	stars  map[int]int // heading level -> asterisk count
+	skip   ast.Node    // block already used as the title; it is not rendered
 }
 
 // renderBlocks renders the block children of parent, separated by blank lines.
 func (r *renderer) renderBlocks(parent ast.Node) string {
 	var blocks []string
 	for c := range children(parent) {
+		if c == r.skip {
+			continue
+		}
 		if s := r.renderBlock(c); s != "" {
 			blocks = append(blocks, s)
 		}
