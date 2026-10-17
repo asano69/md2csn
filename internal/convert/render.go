@@ -6,6 +6,7 @@ import (
 
 	"github.com/asano69/md2csn/internal/wikilink"
 	"github.com/yuin/goldmark/v2/ast"
+	extast "github.com/yuin/goldmark/v2/extension/ast"
 )
 
 type renderer struct {
@@ -38,6 +39,8 @@ func (r *renderer) renderBlock(n ast.Node) string {
 		return r.renderList(n, 0)
 	case *ast.CodeBlock:
 		return r.renderCode(n)
+	case *extast.Table:
+		return r.renderTable(n)
 	default:
 		// Unsupported blocks only keep the content of their child blocks for now.
 		return r.renderBlocks(n)
