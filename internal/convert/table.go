@@ -42,7 +42,7 @@ func tableRows(n ast.Node, rows []ast.Node) []ast.Node {
 func (r *renderer) renderRow(row ast.Node) string {
 	var cells []string
 	for c := range children(row) {
-		cells = append(cells, cellSpace.Replace(r.renderInlines(c)))
+		cells = append(cells, cellSpace.Replace(r.renderInlines(c, stylePlain)))
 	}
 	return strings.Join(cells, "\t")
 }

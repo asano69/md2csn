@@ -8,9 +8,9 @@ import (
 
 // renderLink renders a Markdown link. An external link [text](url) becomes
 // [text url] in Cosense. Other links, such as relative paths, keep only
-// their text.
+// their text. Decorations in the label are dropped.
 func (r *renderer) renderLink(link *ast.Link) string {
-	label := r.renderInlines(link)
+	label := r.renderInlines(link, stylePlain)
 	dest := link.Destination.Value(r.source)
 	if !isExternal(dest) {
 		return label
