@@ -1,0 +1,24 @@
+package ast // import "github.com/yuin/goldmark/v2/ast"
+
+type ListItem struct {
+	BaseBlock
+
+	// Has unexported fields.
+}
+    A ListItem struct represents a list item of Markdown text.
+
+func NewListItem() *ListItem
+func (n *ListItem) Attribute(name string) (text.MultiLineValue, bool)
+func (n *ListItem) Attributes() []Attribute
+func (n *ListItem) Dump(_ []byte) *NodeDump
+func (n *ListItem) Kind() NodeKind
+func (n *ListItem) NextSibling() Node
+func (n *ListItem) Offset() int
+func (n *ListItem) Parent() Node
+func (n *ListItem) PreviousSibling() Node
+func (n *ListItem) RemoveAttributes()
+func (n *ListItem) SetAttribute(name string, value text.MultiLineValue)
+func (n *ListItem) SetNextSibling(v Node)
+func (n *ListItem) SetOffset(v int)
+func (n *ListItem) SetParent(v Node)
+func (n *ListItem) SetPreviousSibling(v Node)

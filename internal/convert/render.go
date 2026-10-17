@@ -33,6 +33,8 @@ func (r *renderer) renderBlock(n ast.Node) string {
 		return fmt.Sprintf("[%s %s]", strings.Repeat("*", r.stars[n.Level]), r.renderInlines(n))
 	case *ast.Paragraph:
 		return r.renderInlines(n)
+	case *ast.List:
+		return r.renderList(n, 0)
 	default:
 		// Unsupported blocks only keep the content of their child blocks for now.
 		return r.renderBlocks(n)

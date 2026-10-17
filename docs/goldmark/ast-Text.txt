@@ -1,0 +1,44 @@
+package ast // import "github.com/yuin/goldmark/v2/ast"
+
+type Text struct {
+
+	// Value is the text value. It is either a source position or an owned string.
+	Value text.SingleLineValue
+
+	// Has unexported fields.
+}
+    A Text struct represents a textual content of the Markdown text.
+
+func NewText(value text.SingleLineValue) *Text
+func (n *Text) AppendChild(_ Node)
+func (n *Text) Attribute(name string) (text.MultiLineValue, bool)
+func (n *Text) Attributes() []Attribute
+func (n *Text) ChildCount() int
+func (n *Text) Children() iter.Seq[Node]
+func (n *Text) Dump(_ []byte) *NodeDump
+func (n *Text) FirstChild() Node
+func (n *Text) FirstRune(source []byte) (rune, bool)
+func (n *Text) HardLineBreak() bool
+func (n *Text) HasChildren() bool
+func (n *Text) InsertAfter(_ Node, _ Node)
+func (n *Text) InsertBefore(_ Node, _ Node)
+func (n *Text) Kind() NodeKind
+func (n *Text) LastChild() Node
+func (n *Text) LastRune(source []byte) (rune, bool)
+func (n *Text) NextSibling() Node
+func (n *Text) OwnerDocument() *Document
+func (n *Text) Parent() Node
+func (n *Text) Pos() int
+func (n *Text) PreviousSibling() Node
+func (n *Text) RemoveAttributes()
+func (n *Text) RemoveChild(_ Node)
+func (n *Text) RemoveChildren()
+func (n *Text) ReplaceChild(_ Node, _ Node)
+func (n *Text) SetAttribute(name string, value text.MultiLineValue)
+func (n *Text) SetHardLineBreak(v bool)
+func (n *Text) SetNextSibling(v Node)
+func (n *Text) SetParent(v Node)
+func (n *Text) SetPos(_ int)
+func (n *Text) SetPreviousSibling(v Node)
+func (n *Text) SetSoftLineBreak(v bool)
+func (n *Text) SoftLineBreak() bool

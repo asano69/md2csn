@@ -1,0 +1,33 @@
+package ast // import "github.com/yuin/goldmark/v2/ast"
+
+type List struct {
+	BaseBlock
+
+	// Marker is a marker character like '-', '+', ')' and '.'.
+	Marker byte
+
+	// IsTight is a true if this list is a 'tight' list.
+	// See https://spec.commonmark.org/0.30/#loose for details.
+	IsTight bool
+
+	// Start is an initial number of this ordered list.
+	// If this list is not an ordered list, Start is 0.
+	Start int
+}
+    A List struct represents a list of Markdown text.
+
+func NewList(marker byte) *List
+func (n *List) Attribute(name string) (text.MultiLineValue, bool)
+func (n *List) Attributes() []Attribute
+func (l *List) CanContinue(marker byte, isOrdered bool) bool
+func (l *List) Dump(_ []byte) *NodeDump
+func (l *List) IsOrdered() bool
+func (l *List) Kind() NodeKind
+func (n *List) NextSibling() Node
+func (n *List) Parent() Node
+func (n *List) PreviousSibling() Node
+func (n *List) RemoveAttributes()
+func (n *List) SetAttribute(name string, value text.MultiLineValue)
+func (n *List) SetNextSibling(v Node)
+func (n *List) SetParent(v Node)
+func (n *List) SetPreviousSibling(v Node)

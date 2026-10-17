@@ -1,0 +1,21 @@
+package ast // import "github.com/yuin/goldmark/v2/ast"
+
+type Paragraph struct {
+	BaseBlock
+}
+    A Paragraph struct represents a paragraph of Markdown text.
+
+func NewParagraph() *Paragraph
+func (n *Paragraph) Attribute(name string) (text.MultiLineValue, bool)
+func (n *Paragraph) Attributes() []Attribute
+func (n *Paragraph) Dump(_ []byte) *NodeDump
+func (n *Paragraph) Kind() NodeKind
+func (n *Paragraph) NextSibling() Node
+func (n *Paragraph) Parent() Node
+func (n *Paragraph) Pos() int
+func (n *Paragraph) PreviousSibling() Node
+func (n *Paragraph) RemoveAttributes()
+func (n *Paragraph) SetAttribute(name string, value text.MultiLineValue)
+func (n *Paragraph) SetNextSibling(v Node)
+func (n *Paragraph) SetParent(v Node)
+func (n *Paragraph) SetPreviousSibling(v Node)
