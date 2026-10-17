@@ -36,6 +36,8 @@ func (r *renderer) renderBlock(n ast.Node) string {
 		return r.renderInlines(n)
 	case *ast.List:
 		return r.renderList(n, 0)
+	case *ast.CodeBlock:
+		return r.renderCode(n)
 	default:
 		// Unsupported blocks only keep the content of their child blocks for now.
 		return r.renderBlocks(n)
