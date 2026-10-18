@@ -51,7 +51,7 @@ func (r *renderer) renderBlock(n ast.Node) string {
 
 // renderInlines renders the inline children of parent. st holds the
 // decorations inherited from the enclosing nodes; stylePlain drops them.
-// Links and code spans are never decorated.
+// Links, images and code spans are never decorated.
 func (r *renderer) renderInlines(parent ast.Node, st style) string {
 	var sb strings.Builder
 	for c := range children(parent) {
@@ -68,6 +68,8 @@ func (r *renderer) renderInlines(parent ast.Node, st style) string {
 			sb.WriteString(st.wrap("[" + r.renderInlines(n, stylePlain) + "]"))
 		case *ast.Link:
 			sb.WriteString(r.renderLink(n))
+		case *ast.Image:
+			sb.WriteString(r.renderImage(n))
 		case *ast.Strong:
 			sb.WriteString(r.renderInlines(n, st.add(styleBold)))
 		case *ast.Emphasis:

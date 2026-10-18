@@ -1,4 +1,14 @@
-[example](https://example.com)
+Test data
+=========
+
+[example](https://example.com)  
+![](https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Meteosat-12-fci-march-equinox-2025-noon.jpg/330px-Meteosat-12-fci-march-equinox-2025-noon.jpg)
+
+![](./sample.jpg)  
+[![alt](https://x.com/a.png)](https://example.com)   
+
+Decoration
+----------
 
 **bold**  
 *italic*  
