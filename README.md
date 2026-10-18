@@ -20,3 +20,20 @@ find markdown -maxdepth 1 -type f -name '*.md' -print0 |
     md2csn "$f" -o "$out"
   ' _ {}
 ```
+
+json
+```sh
+find csn -maxdepth 1 -type f -name '*.csn' -print0 |
+  sort -z |
+  perl -0ne 'chomp; push @f, $_; END { print join("\0", @f), "\0" }' |
+  while IFS= read -r -d '' f; do
+    jq -Rs --arg file "$f" '
+      split("\n") as $lines |
+      {
+        title: ($lines[0] | gsub(" "; "_") | ascii_downcase),
+        lines: $lines
+      }
+    ' "$f"
+  done |
+  jq -s '{pages: .}' > output.json
+```
