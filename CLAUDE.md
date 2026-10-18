@@ -1,6 +1,8 @@
 # Overview
 
 - md2csnは、Markdown記法で書かれたWikiページをCosense記法に変換するCLIツールである。
+- 重要な前提としてMarkdown記法は出版物のように情報を他者に伝えるための記法であるのに対して、Cosense記法は内容を編集しつづけるための記法である。
+- Markdown記法からCosense記法に変換するのは、他者の言葉を、自分の言葉でまとめ直したいからである。このツールのユーザの主要な目的は、テキストをより編集しやすくすることだと考えられる。
 
 - goldmark v2はmarkdownをAST解析できる。AST解析したあと、Cosense記法に変換するGo製の高品質なCLIツールをつくりたい。引数は、md2csn (inputfile | inputfolder) -o (outputfile | outputfolder)のような感じであり、インプットはMarkdownファイルまたはフォルダを想定。複数OK。よくあるX2Y コンバータの慣習にしたがう。
 
