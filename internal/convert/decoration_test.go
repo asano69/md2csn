@@ -20,7 +20,7 @@ func TestConvertDecorations(t *testing.T) {
 		{"soft line break", "**a\nb**\n", "[* a]\n[* b]\n"},
 		{"wikilink is nested", "**[[a]]**\n", "[* [a]]\n"},
 		{"link is not decorated", "**[a](https://x.com)**\n", "[a https://x.com]\n"},
-		{"code span is not decorated", "**`a`**\n", "a\n"},
+		{"code span is not decorated", "**`a`**\n", "`a`\n"},
 		{"in a list item", "- **a**\n", "\t[* a]\n"},
 		{"dropped in a heading", "## **a**\n", "[** a]\n"},
 		{"dropped in a table cell", "| a |\n| - |\n| ~~x~~ |\n", "table:_\n\ta\n\tx\n"},

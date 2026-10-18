@@ -62,7 +62,7 @@ func (r *renderer) renderInlines(parent ast.Node, st style) string {
 				sb.WriteByte('\n')
 			}
 		case *ast.CodeSpan:
-			sb.WriteString(n.Value.Value(r.source))
+			sb.WriteString(r.renderCodeSpan(n))
 		case *wikilink.Node:
 			// [[text]] in Markdown is [text] in Cosense.
 			sb.WriteString(st.wrap("[" + r.renderInlines(n, stylePlain) + "]"))

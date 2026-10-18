@@ -9,11 +9,20 @@
 ***~~text~~***  
 *~~**text**~~*  
 
+`code span`  
+`code
+span`
+
+
+```shell
+echo "hello"
+```
+
+    $ echo hello
+
 - aaa
   bbb
 
-> quote **aaa** [bbb]
-  ccc?
 > quote **aaa** [bbb]
   ccc?
 
