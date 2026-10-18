@@ -37,6 +37,8 @@ func (r *renderer) renderBlock(n ast.Node) string {
 		return r.renderInlines(n, styleNone)
 	case *ast.List:
 		return r.renderList(n, 0)
+	case *ast.Blockquote:
+		return r.renderQuote(n)
 	case *ast.CodeBlock:
 		return r.renderCode(n)
 	case *extast.Table:

@@ -12,10 +12,21 @@
 - aaa
   bbb
 
-> quote
-  aaa?
+> quote **aaa** [bbb]
+  ccc?
+> quote **aaa** [bbb]
+  ccc?
+
+> aaa
+> bbb
 
 aaa bbb
+ccc
+
+aaa bbb  
+ccc
+
+aaa bbb\
 ccc
 
 | Name | Worth | Face | discontinued? |
