@@ -20,8 +20,10 @@ func (r *renderer) renderList(list *ast.List, depth int) string {
 	return strings.Join(lines, "\n")
 }
 
-// renderItem renders the blocks of one list item. Every line after the first
-// is one tab deeper than the first line. Nested lists keep their own depth.
+// renderItem renders the blocks of one list item. Line breaks inside a
+// paragraph are joined with a space, so a paragraph is always one line.
+// Every other line after the first, such as a second paragraph, is one tab
+// deeper than the first line. Nested lists keep their own depth.
 func (r *renderer) renderItem(item ast.Node, ordered bool, depth int) []string {
 	indent, prefix := depth+1, ""
 	if ordered {
@@ -37,7 +39,11 @@ func (r *renderer) renderItem(item ast.Node, ordered bool, depth int) []string {
 			}
 			continue
 		}
-		for _, line := range strings.Split(r.renderBlock(c), "\n") {
+		text := r.renderBlock(c)
+		if _, ok := c.(*ast.Paragraph); ok {
+			text = strings.ReplaceAll(text, "\n", " ")
+		}
+		for _, line := range strings.Split(text, "\n") {
 			if line == "" {
 				continue // a blank line would end the list in Cosense
 			}
